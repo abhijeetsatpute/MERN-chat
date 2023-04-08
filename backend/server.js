@@ -1,6 +1,6 @@
 const express = require("express");
-const {chats} = require("./data/data");
-// const connectDB = require("./config/db");
+const { chats } = require("./data/data");
+const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 // const userRoutes = require("./routes/userRoutes");
 // const chatRoutes = require("./routes/chatRoutes");
@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 // const path = require("path");
 
 dotenv.config();
-// connectDB();
+connectDB();
 const app = express();
 
 // app.use(express.json()); // to accept json data
@@ -23,7 +23,7 @@ app.get("/api/chat", (req, res) => {
 });
 
 app.get("/api/chat/:id", (req, res) => {
-  const singleChat =  chats.find(c => c._id === req.params.id);
+  const singleChat = chats.find((c) => c._id === req.params.id);
   res.send(singleChat);
 });
 
@@ -57,7 +57,7 @@ const PORT = process.env.PORT;
 
 const server = app.listen(
   PORT,
-  console.log(`Server running on PORT ${PORT}...`)
+  console.log(`Server running on PORT ${PORT}...`.yellow.bold)
 );
 
 // const io = require("socket.io")(server, {
