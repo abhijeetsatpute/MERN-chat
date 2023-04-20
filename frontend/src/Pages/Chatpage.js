@@ -8,6 +8,7 @@ import SideDrawer from "../components/miscellaneous/SideDrawer";
 
 const Chatpage = () => {
   const { user } = ChatState();
+  const [fetchAgain, setFetchAgain] = useState(false);
   return (
     <div style={{ width: "100%" }}>
       {user && <SideDrawer />}
@@ -18,8 +19,10 @@ const Chatpage = () => {
         h={"90vh"}
         p={"10px"}
       >
-        {user && <MyChats />}
-        {user && <Chatbox />}
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && (
+          <Chatbox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        )}
       </Box>
     </div>
   );
