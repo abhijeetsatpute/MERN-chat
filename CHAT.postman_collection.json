@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "ed65e811-a445-4075-af88-c813997f6ed2",
+		"name": "CHAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"user3\",\r\n    \"email\":\"user3@mail.com\",\r\n    \"password\":\"Password@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/user",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user1@mail.com\",\r\n    \"password\":\"Password@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/user/login",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"abhi@test.com\",\r\n    \"password\":\"Abhi@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/user?search=us",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "us"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chats",
+			"item": [
+				{
+					"name": "Create or Access a One on One chat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"643180e59ee48caafa9f81ec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetching Chats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE4MGU1OWVlNDhjYWFmYTlmODFlYyIsImlhdCI6MTY4MjAwMjY0NywiZXhwIjoxNjg0NTk0NjQ3fQ.HymBJ0T2mkgTFPlHbq2xIjYNPm7HFx__YtteTW1O8rA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Group Chat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"Test Group\",\r\n\"users\": \"[\\\"643180e59ee48caafa9f81ec\\\",\\\"643357aaeaf268f2028d4755\\\"]\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat/group",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"6433583eeaf268f2028d475a\",\r\n    \"chatName\":\"Test Group Renamed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat/rename",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User to Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"6433583eeaf268f2028d475a\",\r\n    \"userId\":\"64335ac775bfcf24b372fe13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat/groupadd",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"groupadd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User from Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE3OGViYmM2NjlmZDFhMmQ1MmRmZCIsImlhdCI6MTY4MTA4NTc1NCwiZXhwIjoxNjgzNjc3NzU0fQ.TFj_n_F26SjDrL9eY-rnJhYrQgasP5wcJhZcBLi07A8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"6433583eeaf268f2028d475a\",\r\n    \"userId\":\"64335ac775bfcf24b372fe13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/chat/groupremove",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"groupremove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Sending a new Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE4MGU1OWVlNDhjYWFmYTlmODFlYyIsImlhdCI6MTY4MjAwMjY0NywiZXhwIjoxNjg0NTk0NjQ3fQ.HymBJ0T2mkgTFPlHbq2xIjYNPm7HFx__YtteTW1O8rA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Hello\",\r\n    \"chatId\": \"643958a2f5de59c647ecf750\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chat_uri}}/api/message",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all messages for a chat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzE4MGU1OWVlNDhjYWFmYTlmODFlYyIsImlhdCI6MTY4MjAwMjY0NywiZXhwIjoxNjg0NTk0NjQ3fQ.HymBJ0T2mkgTFPlHbq2xIjYNPm7HFx__YtteTW1O8rA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chat_uri}}/api/message/643958a2f5de59c647ecf750",
+							"host": [
+								"{{chat_uri}}"
+							],
+							"path": [
+								"api",
+								"message",
+								"643958a2f5de59c647ecf750"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET /",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chats data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single chat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/chat/617a077e18c25468bc7c4dd4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"chat",
+						"617a077e18c25468bc7c4dd4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
